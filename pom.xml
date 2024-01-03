@@ -15,6 +15,7 @@
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <lombok.version>1.18.30</lombok.version>
         <junit.version>5.9.2</junit.version>
+        <jmh-core.version>1.37</jmh-core.version>
     </properties>
 
     <dependencies>
@@ -45,6 +46,17 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-core.version}</version>
         </dependency>
 
 

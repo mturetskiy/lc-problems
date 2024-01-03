@@ -1,11 +1,14 @@
 package com.mtur.lc;
 
+import com.mtur.lc.utils.DataGenerator;
+import com.mtur.lc.utils.TestUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static com.mtur.lc.utils.TestUtils.measureDuration;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
@@ -29,36 +32,12 @@ class ArrayTo2dArrayTest {
     }
 
     @Test
-    void testFindMatrixPerfComparison() throws InterruptedException {
+    void testFindMatrixPerfComparison() throws Exception {
         int[] ints = DataGenerator.generateUnsortedArray(200);
-        log.info("Warmup ...");
-        new ArrayTo2dArray().findMatrix(ints);
-        log.info("Warmup is done.");
 
-        long start1 = System.nanoTime();
-        new ArrayTo2dArray().findMatrix(ints);
-        log.info("[Normal] Done in: {} mks.", (System.nanoTime() - start1) / 1000.0f);
-
-        Runtime.getRuntime().gc();
-        Thread.sleep(2000);
-        new ArrayTo2dArrayFastLL().findMatrix(ints);
-        long start2 = System.nanoTime();
-        new ArrayTo2dArrayFastLL().findMatrix(ints);
-        log.info("[Fast LL] Done in: {} mks.", (System.nanoTime() - start2) / 1000.0f);
-
-        Runtime.getRuntime().gc();
-        Thread.sleep(2000);
-        new ArrayTo2dArrayFastAL().findMatrix(ints);
-        long start3 = System.nanoTime();
-        new ArrayTo2dArrayFastAL().findMatrix(ints);
-        log.info("[Fast AL] Done in: {} mks.", (System.nanoTime() - start3) / 1000.0f);
-
-
-        Runtime.getRuntime().gc();
-        Thread.sleep(2000);
-        new ArrayTo2dArrayOpt().findMatrix(ints);
-        long start4 = System.nanoTime();
-        new ArrayTo2dArrayOpt().findMatrix(ints);
-        log.info("[Fast AL] Done in: {} mks.", (System.nanoTime() - start4) / 1000.0f);
+        measureDuration("Base", () -> new ArrayTo2dArray().findMatrix(ints));
+        measureDuration("Fast LL", () -> new ArrayTo2dArrayFastLL().findMatrix(ints));
+        measureDuration("Fast AL", () -> new ArrayTo2dArrayFastAL().findMatrix(ints));
+        measureDuration("Opt", () -> new ArrayTo2dArrayOpt().findMatrix(ints));
     }
 }
