@@ -16,6 +16,17 @@ public class DataGenerator {
         return res;
     }
 
+    public static int[] generateUnsortedArray(int size, int minIncl, int maxIncl) {
+        log.info("Generating unsorted array of {} elements: [{}, {}]", size, minIncl, maxIncl);
+        int[] res = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            res[i] = RandomUtils.nextInt(minIncl, maxIncl < Integer.MAX_VALUE ? maxIncl + 1 : maxIncl);
+        }
+
+        return res;
+    }
+
     public static String generateStr(int len, char... chars) {
         StringBuilder sb = new StringBuilder(len);
         for (int i = 0; i < len; i++) {
