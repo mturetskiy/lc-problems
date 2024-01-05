@@ -9,17 +9,17 @@ import org.openjdk.jmh.annotations.*;
 import static com.mtur.lc.utils.DataGenerator.generateStrMatrix;
 
 public class LaserBeamsBench {
-    @Benchmark
+//    @Benchmark
     public void laserBeams(BenchState state) {
         new LaserBeams().numberOfBeams(state.matrix);
     }
 
-    @Benchmark
+//    @Benchmark
     public void laserBeamsOpt(BenchState state) {
         new LaserBeamsOpt().numberOfBeams(state.matrix);
     }
 
-    @Benchmark
+//    @Benchmark
     public void laserBeamsOpt2(BenchState state) {
         new LaserBeamsOpt2().numberOfBeams(state.matrix);
     }

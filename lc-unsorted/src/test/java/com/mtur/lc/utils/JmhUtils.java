@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 public class JmhUtils {
     public static void runJmh() {
         try {
-            org.openjdk.jmh.Main.main(new String[]{"-i", "3", "-f", "1", "-wi", "2", "-bm", "SingleShotTime", "-tu", "ms"});
+            org.openjdk.jmh.Main.main(new String[]{"-i", "100", "-f", "1", "-wi", "2", "-bm", "SingleShotTime", "-tu", "ms"});
         } catch (Exception e) {
             log.error("Exception during jmh run.", e);
         }

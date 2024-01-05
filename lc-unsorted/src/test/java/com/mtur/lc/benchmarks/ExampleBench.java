@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class ExampleBench {
-    @Benchmark
+//    @Benchmark
     @BenchmarkMode(Mode.SingleShotTime)
     @Measurement(iterations = 3)
     @Warmup(iterations = 2)
