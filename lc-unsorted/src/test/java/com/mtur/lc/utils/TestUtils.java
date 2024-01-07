@@ -2,6 +2,10 @@ package com.mtur.lc.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
@@ -49,5 +53,17 @@ public class TestUtils {
         }
 
         return durationNs / 1_000_000_000.0f + " s";
+    }
+
+    public static int[] loadIntsFromFile(String fileName) {
+        try {
+            URI uri = TestUtils.class.getResource(fileName).toURI();
+            String content = Files.readString(Path.of(uri));
+            String[] split = content.split(",");
+            return Arrays.stream(split).mapToInt(Integer::valueOf).toArray();
+        } catch (Exception e) {
+            log.error("Unable to read file: {} content.", fileName, e);
+            throw new IllegalArgumentException(e);
+        }
     }
 }
