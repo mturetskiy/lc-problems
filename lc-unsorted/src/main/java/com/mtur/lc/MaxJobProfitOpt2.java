@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 @Slf4j
-public class MaxJobProfitOpt2 {
+public class MaxJobProfitOpt2 implements MaxJobProfitSolver {
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
         long iters = 0;
         long todoSkips = 0;

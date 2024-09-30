@@ -5,9 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
 
 @Slf4j
-public class MaxJobProfit {
-    int iters = 0;
+public class MaxJobProfit implements MaxJobProfitSolver {
+    long iters = 0;
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
+        iters = 0;
         int length = startTime.length;
         int[] sortedIds = makeSortedIds(startTime);
 
@@ -55,9 +56,9 @@ public class MaxJobProfit {
             return currProfit;
         }
 
-        if (calcProfits[realId] != 0) {
-            return calcProfits[realId];
-        }
+//        if (calcProfits[realId] != 0) {
+//            return calcProfits[realId];
+//        }
 
 //        log.info("calc for: {}, profit: {}", realId, currProfit);
 

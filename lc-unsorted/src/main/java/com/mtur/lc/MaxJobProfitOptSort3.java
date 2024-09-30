@@ -3,7 +3,7 @@ package com.mtur.lc;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class MaxJobProfitOptSort3 {
+public class MaxJobProfitOptSort3 implements MaxJobProfitSolver {
     int iters = 0;
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
         int length = startTime.length;

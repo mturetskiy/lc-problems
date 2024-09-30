@@ -60,7 +60,7 @@ public class TestUtils {
             URI uri = TestUtils.class.getResource(fileName).toURI();
             String content = Files.readString(Path.of(uri));
             String[] split = content.split(",");
-            return Arrays.stream(split).mapToInt(Integer::valueOf).toArray();
+            return Arrays.stream(split).map(String::trim).mapToInt(Integer::valueOf).toArray();
         } catch (Exception e) {
             log.error("Unable to read file: {} content.", fileName, e);
             throw new IllegalArgumentException(e);

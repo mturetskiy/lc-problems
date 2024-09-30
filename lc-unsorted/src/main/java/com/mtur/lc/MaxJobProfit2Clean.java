@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Arrays;
 
 @Slf4j
-public class MaxJobProfit2Clean {
+public class MaxJobProfit2Clean implements MaxJobProfitSolver {
     long iters = 0;
     long reqCount = 0;
 
