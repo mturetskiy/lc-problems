@@ -26,6 +26,11 @@ public class ParseStringTemplate {
         ParseStringTemplate ps = new ParseStringTemplate();
         ps.parse(val);
 
-        // ...
+        log.info("{}", ps.getValues("key1"));
+        log.info("{}", ps.getValues("key2"));
+        log.info("{}", ps.getValues("key3"));
+
+        log.info("Restored original: {}", ps.getOriginal());
+        log.info("Is same: {}", val.equals(ps.getOriginal()));
     }
 }

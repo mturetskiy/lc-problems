@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Slf4j
 public class ParseString2 {
-    private Map<String, ArrayList<String>> map = new HashMap<>();
+    private Map<String, List<String>> map = new HashMap<>();
     private List<String> keys = new ArrayList<>();
 
     public void parse(String str) {
@@ -41,7 +41,7 @@ public class ParseString2 {
         Map<String, Integer> nextKeyValIndex = new HashMap<>();
 
         for (String key : keys) {
-            ArrayList<String> values = map.get(key);
+            List<String> values = map.get(key);
 
             Integer valueIdx = nextKeyValIndex.getOrDefault(key, 0);
             String value = values.get(valueIdx);
@@ -55,6 +55,21 @@ public class ParseString2 {
 
     public List<String> getValues(String key) {
         return map.get(key);
+    }
+
+    public static void main(String[] args) {
+        String val = "key1=val1;key2=val2;key3=val3;key1=val4;key2=val6;key1=val6";
+        ParseString2 ps = new ParseString2();
+        ps.parse(val);
+
+        log.info("{}", ps.getValues("key1"));
+        log.info("{}", ps.getValues("key2"));
+        log.info("{}", ps.getValues("key3"));
+
+        log.info("Restored original: {}", ps.getOriginal());
+        log.info("Is same: {}", val.equals(ps.getOriginal()));
+
+
     }
 
 }

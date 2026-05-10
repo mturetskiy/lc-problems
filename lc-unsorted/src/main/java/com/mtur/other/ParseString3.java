@@ -53,4 +53,18 @@ public class ParseString3 {
         return valPosMap != null ? valPosMap.values() : null;
     }
 
+    public static void main(String[] args) {
+        String val = "key1=val1;key2=val2;key3=val3;key1=val4;key2=val6;key1=val6";
+        ParseString3 ps = new ParseString3();
+        ps.parse(val);
+
+        log.info("{}", ps.getValues("key1"));
+        log.info("{}", ps.getValues("key2"));
+        log.info("{}", ps.getValues("key3"));
+
+        log.info("Restored original: {}", ps.getOriginal());
+        log.info("Is same: {}", val.equals(ps.getOriginal()));
+
+
+    }
 }
